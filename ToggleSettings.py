@@ -1,4 +1,3 @@
-from types import *
 import string
 import sublime, sublime_plugin
 
@@ -9,7 +8,7 @@ class ToggleSettings(sublime_plugin.WindowCommand):
         self._settings = []
         for name in TOGGLE_SETTINGS:
             value = self.window.active_view().settings().get(name)
-            if isinstance(value, BooleanType):
+            if isinstance(value, bool):
                 self._settings.append({'name': name, 'value': not value})
         if len(self._settings) > 0:
             self.window.show_quick_panel([_to_caption(setting) for setting in self._settings], self.on_done)
